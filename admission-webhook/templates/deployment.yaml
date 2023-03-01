@@ -67,12 +67,12 @@ spec:
             httpGet:
               path: '/health'
               port: 8443
-              scheme: https
+              scheme: HTTPS
           readinessProbe:
             httpGet:
               path: '/health'
               port: 8443
-              scheme: https
+              scheme: HTTPS
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
