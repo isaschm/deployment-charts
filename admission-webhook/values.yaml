@@ -26,48 +26,26 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {runAsNonRoot: true, runAsUser: 1234}
-
-securityContext:
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
+podSecurityContext:
   runAsNonRoot: true
   runAsUser: 1234
+
+securityContext: {}
 
 tlsSecretName: "admission-webhook-secret"
 
 service:
   port: 443
-  name: webhook-api
-  targetPort: webhook-api
 
 certmanager:
   enabled: true
   useSelfSignedIssuer: true
-
-containerPort:
-  port: 8443
-  name: webhook-api
-
-volumeMounts:
-  name: webhook-tls-certs
-  mountPath: /run/secrets/tls
-  readOnly: true
 
 secret:
   secretName: webhook-server-tls
 
 certificate:
   name: webhook-cert
-
-webhooks:
-  mutating:
-    name: demo-webhook
-    svc: webhook-server.webhook-demo.svc
-    annotations:
-      cert-manager.io/inject-ca-from: webhook-demo/webhook-cert
 
 resources:
 limits:

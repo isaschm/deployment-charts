@@ -9,7 +9,7 @@ webhooks:
   admissionReviewVersions: ["v1"]
   sideEffects: None
   timeoutSeconds: 1
-  failurePolicy: Ignore
+  failurePolicy: Fail
   rules:
   - operations: ["CREATE"]
     apiGroups: ["*"]
