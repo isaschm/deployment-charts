@@ -9,12 +9,11 @@ webhooks:
   admissionReviewVersions: ["v1"]
   sideEffects: None
   timeoutSeconds: 1
-  failurePolicy: Fail
   rules:
   - operations: ["CREATE"]
     apiGroups: ["*"]
-    apiVersions: ["*"]
-    resources: ["*"]
+    apiVersions: ["v1"]
+    resources: ["pods"]
     scope: "*"
   clientConfig:
     {{- /* if this is an upgrade and cm is enabled, and it's a self signed issuer, enforce hookCaBundle being set */}}
@@ -26,4 +25,4 @@ webhooks:
     service:
       namespace: {{ .Release.Namespace }}
       name: {{ include "admission-webhook.fullname" . }}
-      path: /api/v1/admission
+      path: /mutate
