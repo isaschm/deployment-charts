@@ -10,10 +10,14 @@ webhooks:
   sideEffects: None
   timeoutSeconds: 1
   rules:
-  - operations: ["CREATE"]
-    apiGroups: ["*"]
-    apiVersions: ["v1"]
-    resources: ["pods"]
+  - operations:
+    - CREATE
+    apiGroups:
+    - "*"
+    apiVersions:
+    - v1
+    resources:
+    - pods
     scope: "*"
   clientConfig:
     {{- /* if this is an upgrade and cm is enabled, and it's a self signed issuer, enforce hookCaBundle being set */}}
