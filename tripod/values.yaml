@@ -40,7 +40,7 @@ ingress:
   enabled: false
 
 service:
-  #  type: ClusterIP
+  type: NodePort
   port: 8081
 
 resources:
