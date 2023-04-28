@@ -60,7 +60,7 @@ spec:
           - name: NODE_CONFIG_DIR
             value: /var/run/config:/usr/src/app/config
           - name: OTEL_EXPORTER_OTLP_ENDPOINT
-            value: 'http://my-otel-demo-otelcol.default.svc.cluster.local:4318'
+            value: http://my-otel-demo-otelcol.default.svc.cluster.local:4318
           ports:
             - name: https
               containerPort: 8443
